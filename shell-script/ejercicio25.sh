@@ -6,12 +6,12 @@ print(){
 	done
 }
 compruebo(){
-	
 	case "$1" in
-	b) 
+	-b) 
 		pos=$2
-		if [ pos -le ${#users[@]} ] && [ pos -ge 0 ]; then
-			echo "$users[$pos]"
+		if [ $pos -le ${#users[@]} ] && [ $pos -ge 0 ]; then
+			elem="${users[$pos]}"
+			echo "$elem"
 		else
 			echo "Esa pos no existe"
 		fi
@@ -37,4 +37,5 @@ for user in /home/*; do
 done
 print
 echo ""
-compruebo
+compruebo "$@"
+exit 0
